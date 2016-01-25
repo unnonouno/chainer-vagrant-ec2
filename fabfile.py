@@ -108,7 +108,6 @@ def install_chainer():
     apt_update()
     install_cuda70()
     install_cudnn3()
-    install_chainer()
     install_chainer_env()
     sudo('pip install chainer')
 
