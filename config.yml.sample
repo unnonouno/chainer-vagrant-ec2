@@ -1,0 +1,5 @@
+access_key_id: YOUR_ACCESS_KEY_ID
+secret_access_key: YOUR_SECRET_ACCESS_KEY
+keypair_name: KEY_PAIR_NAME
+security_groups: SECURITY_GROUP_NAME
+private_key_path = /PATH/TO/PRIATE/KEY
