@@ -51,8 +51,12 @@ Usage
 $ vagrant up
 ```
 
-`vagrant provision` setups the instance.
+Setups the instance with `vagrant provision`.
 It installs tools and libraries which are required to build Chainer, and downloads sources of Chainer.
+
+```
+$ vagrant provision
+```
 
 Now, run ssh and login the instance.
 
