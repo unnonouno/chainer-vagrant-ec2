@@ -84,8 +84,8 @@ def _install_cudnn(ver, cudnn):
     sudo('ldconfig')
 
 
-def install_cudnn4_rc():
-    _install_cudnn('v4', 'cudnn-7.0-linux-x64-v4.0-rc.tgz')
+def install_cudnn4():
+    _install_cudnn('v4', 'cudnn-7.0-linux-x64-v4.0-prod.tgz')
 
 
 def install_cudnn3():
@@ -107,7 +107,7 @@ def install_chainer_env():
 def install_chainer():
     apt_update()
     install_cuda70()
-    install_cudnn3()
+    install_cudnn4()
     install_chainer_env()
     sudo('pip install chainer')
 
@@ -115,7 +115,7 @@ def install_chainer():
 def install_chainer_dev():
     apt_update()
     install_cuda70()
-    install_cudnn3()
+    install_cudnn4()
     install_chainer_env()
     sudo('apt-get install -yq git')
     run('git clone https://github.com/pfnet/chainer.git')
