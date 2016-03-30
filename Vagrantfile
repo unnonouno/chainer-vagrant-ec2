@@ -8,6 +8,8 @@ ec2_config = YAML.load_file('config.yml')
 
 Vagrant.configure(2) do |config|
   config.vm.box = "dummy"
+  config.vm.synced_folder ".", "/vagrant", type: "rsync",
+                          rsync__exclude: [".git/", "config.yml"]
 
   config.vm.provider :aws do |aws, override|
     aws.access_key_id = ec2_config["access_key_id"]
@@ -27,6 +29,6 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision :fabric do |fabric|
     fabric.fabfile_path = "./fabfile.py"
-    fabric.tasks = ["install_chainer_dev"]
+    fabric.tasks = ["install_chainer"]
   end
 end
