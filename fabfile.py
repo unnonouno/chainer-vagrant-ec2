@@ -71,7 +71,7 @@ def install_chainer_env():
 def install_chainer():
     apt_update()
     install_nvidia()
-    install_cuda70_deb()
+    install_cuda75_deb()
     install_cudnn4()
     install_chainer_env()
     sudo('pip install chainer')
@@ -80,7 +80,7 @@ def install_chainer():
 def install_chainer_dev():
     apt_update()
     install_nvidia()
-    install_cuda70_deb()
+    install_cuda75_deb()
     install_cudnn4()
     install_chainer_env()
     sudo('apt-get install -yq git')
