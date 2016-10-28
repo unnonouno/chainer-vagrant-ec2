@@ -16,7 +16,7 @@ Vagrant.configure(2) do |config|
     aws.secret_access_key = ec2_config["secret_access_key"]
     aws.keypair_name = ec2_config["keypair_name"]
 
-    aws.block_device_mapping = [{"DeviceName" => "/dev/sda1", "Ebs.VolumeSize" => 100}]
+    aws.block_device_mapping = [{"DeviceName" => "/dev/sda1", "Ebs.VolumeSize" => 50}]
     
     aws.associate_public_ip = true
     aws.ami = "ami-746aba14"
