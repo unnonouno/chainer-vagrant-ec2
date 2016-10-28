@@ -90,6 +90,9 @@ def install_chainer():
     install_chainer_env()
     sudo('pip install chainer')
 
+    # On ubuntu16.04, lightdb runs out of cpu.
+    sudo('systemctl disable lightdm')
+
 
 def install_chainer_dev():
     apt_update()
