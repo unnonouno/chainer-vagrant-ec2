@@ -13,8 +13,19 @@ def install_nvidia():
         sudo('apt-get install -yq linux-image-extra-`uname -r`')
         sudo('add-apt-repository -y ppa:graphics-drivers/ppa')
         sudo('apt-get -y update')
-        sudo('apt-get -yq install nvidia-352 nvidia-settings')
+        sudo('apt-get -yq install nvidia-367 nvidia-settings')
 
+
+def install_cuda80_deb():
+    with shell_env(DEBIAN_FRONTEND='noninteractive'):
+        deb_file = 'cuda-repo-ubuntu1604-8-0-local_8.0.44-1_amd64-deb'
+        url = 'https://developer.nvidia.com/compute/cuda/8.0/prod/local_installers/%s' % deb_file
+        run('wget -q %s' % url)
+        sudo('dpkg -i %s' % deb_file)
+        sudo('apt-get update -yq')
+        sudo('apt-get install -yq cuda')
+        run('echo "export PATH=/usr/local/cuda/bin:$PATH" >> ~/.bash_profile')
+        fabric.operations.reboot()
 
 def install_cuda75_deb():
     with shell_env(DEBIAN_FRONTEND='noninteractive'):
@@ -49,6 +60,9 @@ def _install_cudnn(ver, cudnn):
     sudo('ldconfig')
 
 
+def install_cudnn5():
+    _install_cudnn('v5.1', 'cudnn-8.0-linux-x64-v5.1.tgz')
+
 def install_cudnn4():
     _install_cudnn('v4', 'cudnn-7.0-linux-x64-v4.0-prod.tgz')
 
@@ -71,8 +85,8 @@ def install_chainer_env():
 def install_chainer():
     apt_update()
     install_nvidia()
-    install_cuda75_deb()
-    install_cudnn4()
+    install_cuda80_deb()
+    install_cudnn5()
     install_chainer_env()
     sudo('pip install chainer')
 
