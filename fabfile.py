@@ -76,10 +76,10 @@ def install_cudnn2():
 
 
 def install_chainer_env():
-    sudo('apt-get install -yq g++ libhdf5-dev python-dev python-pip')
-    sudo('pip install -U setuptools pip')
-    sudo('pip install h5py')
-    sudo('pip install numpy')
+    sudo('apt-get install -yq g++ libhdf5-dev python3-dev python3-pip')
+    sudo('pip3 install -U setuptools pip')
+    sudo('pip3 install h5py')
+    sudo('pip3 install numpy')
 
 
 def install_chainer():
@@ -88,7 +88,7 @@ def install_chainer():
     install_cuda80_deb()
     install_cudnn5()
     install_chainer_env()
-    sudo('pip install chainer')
+    sudo('pip3 install chainer')
 
     # On ubuntu16.04, lightdb runs out of cpu.
     sudo('systemctl disable lightdm')
@@ -101,5 +101,5 @@ def install_chainer_dev():
     install_cudnn4()
     install_chainer_env()
     sudo('apt-get install -yq git')
-    sudo('pip install cython')
+    sudo('pip3 install cython')
     run('git clone https://github.com/pfnet/chainer.git')
